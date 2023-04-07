@@ -30,7 +30,6 @@ function avtorization() {
     splitDataSends();
 }
 
-
 function splitDataSends() {
     var dataForms = document.getElementsByClassName("text2");
     var dataUserPlace = [];
@@ -43,7 +42,6 @@ function splitDataSends() {
 
 function splitDates(arrU, arrP) {
     var table = document.getElementsByClassName("tableUser")[0];
-
 
     table.innerHTML = "";
     var tmp = "";
@@ -71,7 +69,6 @@ function splitDates(arrU, arrP) {
     }
     table.innerHTML = tmp;
 }
-
 
 function proverohka(Rstr, Vstr) {
 
@@ -125,7 +122,6 @@ function userVnum(array) {
     Vstr = str.split(",");
 
     return Vstr;
-
 }
 function vclearRegForm() {
     var input = document.getElementsByClassName("text1");
@@ -161,29 +157,20 @@ function regestration() {
     }
 };
 
+
 fr.onchange = function (e) {
 
     input1 = e.target
-    input2 = e.target
-    var output2 = '';
+
     var reader1 = new FileReader();
-    var reader2 = new FileReader();
 
     reader1.onload = function () {
         dataUrl1 = reader1.result
         output1.src = dataUrl1;
     };
-    reader2.onload = function () {
-        var dataUrl2 = reader2.result
-        output2.src = dataUrl2;
-    }
+
     reader1.readAsDataURL(input1.files[0]);
-    reader2.readAsDataURL(input2.files[0]);
 };
-
-
-
-
 
 UserStorage = {};
 UserStorage.users = [];
@@ -194,7 +181,6 @@ function save() {
     localStorage.setItem("UserStorage", JSON.stringify(UserStorage.users))
     document.body.onload = function () {
         userArray = JSON.parse(localStorage.getItem("UserStorage"))
-
     }
 }
 function userNum(array) {
@@ -274,10 +260,7 @@ function validationPass(pass) {
     }
     return ok;
 }
-
-
 ////////////////////////Верификация
-
 function validationVemail(emailV) {
     var textV = document.getElementsByName("vEmail")[0];
     var p = /^(\w+\.)*\w+@\w+(\.\w+)*\.\D{2,5}$/gi
@@ -307,12 +290,12 @@ function validationVpass(passV) {
     }
     return ok;
 }
-////////////Смена фото по наведению
+//////////Смена фото по наведению
 // function change1() {
-//     pic1.src = "img/chahka1.jpg";
+//     pic1.src = "./img/chahka1.jpg";
 // };
 // function change2() {
-//     pic1.src = "img/chahka.jpg";
+//     pic1.src = "./img/chahka.jpg";
 // };
 // function change3() {
 //     pic2.src = "img/chahka2.jpg";
@@ -351,14 +334,15 @@ function validationVpass(passV) {
 // hover5.onmouseout = change9;
 
 ///////////////Добовляем карточки в корзину
+var arrayP = [];
 
-document.getElementsByClassName("boxs")[0].onclick = function (e)  {
-
+var index = parseInt(localStorage.getItem('count'))
+document.getElementsByClassName("boxs")[0].onclick = function (e) {
+    product = e.target;
     if (e.target.localName == 'a' && e.target.className != "asdfrqw") {
 
-        product = e.target;
-        product.id = "tt";
 
+        product.id = "tt";
 
         var cartProd = document.createElement("div")
         cartProd.className = "cartProd";
@@ -392,102 +376,81 @@ document.getElementsByClassName("boxs")[0].onclick = function (e)  {
         deltr.className = "deltr"
         cartProd.appendChild(deltr);
 
+        var order = {
+            "img": img.src,
+            "name": name.innerText,
+            "price": price.innerText,
+        }
+
+        arrayP[index++] = order;
+
+        localStorage.setItem('order', JSON.stringify(arrayP));
+        localStorage.setItem('count', JSON.stringify(index));
+        document.getElementById("counterP").innerText++
+        if (document.getElementById("counterP").innerText != 0)
+            document.getElementById("counterP").style["display"] = "inline-block"
+        else
+            document.getElementById("counterP").style["display"] = "none"
+
         product.id = "";
     }
-
-
-};
+}
 
 ///////////////Удаляем карточки из корзины
 document.getElementsByClassName("delite")[0].onclick = function (z) {
     del = z.target;
 
     if (z.target.className == 'del') {
-        del = z.target
-        del.id = "tt2"
+        del = e.target
+        del.id = "tt"
     }
     if (z.target.className == 'deltr') {
         carzina.removeChild(del.closest('.cartProd'))
     }
 }
-/////////////////////////////////////////
+
+//////////////////////////////////////
 
 
+document.getElementsByClassName("bmodal_container")[0].onclick = function (e) {
+    str = e.target
+    console.log(e)
+    if (e.target.className == 'del') {
+        str = e.target
+        str.id = "tt"
+        array = JSON.parse(localStorage.order).slice(0, -1)
+        localStorage.count = --index
+        localStorage.order = JSON.stringify(array)
+        bmodalw.removeChild(tt1.closest(".cartProd"))
+        document.getElementById("counter").innerText = index
+        if (document.getElementById("counter").innerText == 0)
+            document.getElementById("counter").style["display"] = "none"
+    }
+    if (e.target.className == 'deltr') {
+        bmodalw.removeChild(str.closest('.cartProd'))
+    }
+}
 
 var newCups = [];
 var cupsAdds = document.getElementById("cupsAdds");
 
 function newCup(name, text, price, img) {
     this.name = name,
-    this.text = text,
-    this.price = price,
-    this.img = img
+        this.text = text,
+        this.price = price,
+        this.img = img
 };
 
 function printCup() {
     var str = "";
-    for (var i = 0; i < newCups.length; ++i) {
-        str = '<div class="box box1"><img id="pic" src="' + newCups[i].img + '" alt="cup"><div class="description"><h3 class="name">' + newCups[i].name + '</h3><p class="opis">' + newCups[i].text + '</p class="price"><span class="price">Цена-' + newCups[i].price + ' &#8372 </span><a class="box_button" href="#">Купить</a></div></div>'
-    }
+    for (var i = 0; i < newCups.length; i++) {
+        str = '<div class="box"><div></div><img id="pic" src="' + newCups[i].img + '" alt="cup"><div></div><div class="description"><div></div><h3 class="name">' + newCups[i].name + '</h3><div></div><p class="opis">' + newCups[i].text + '</p><div></div><span class="price">Цена-' + newCups[i].price + ' &#8372 </span><a class="box_button" href="#">Купить</a></div></div>'
 
+    }
     cupsAdds.innerHTML += str;
-
-
-    document.getElementsByClassName("boxs")[0].onclick = function (f)  {
-
-    if (f.target.localName == 'a' && f.target.className != "asdfrqw") {
-
-        product = f.target;
-        product.id = "ff";
-
-        var cartProd = document.createElement("div")
-        cartProd.className = "cartProd";
-
-        var img3 = document.createElement("img")
-        img1 = ff.closest(".box1").childNodes[0].src
-        img3.src = img1;
-        img3.style.width = "100px"
-
-        var name1 = document.createElement("h3")
-        text2 = ff.closest(".box1").childNodes[3].childNodes[2].innerText;
-        name1.innerText = text2;
-
-        var name3 = document.createElement("p")
-        text3 = ff.closest(".box1").childNodes[3].childNodes[1].innerText;
-        name3.innerText = text3;
-
-        var price3 = document.createElement("span")
-        price = ff.closest(".box1").childNodes[3].childNodes[2].innerText;
-        price3.innerText = price;
-
-        document.getElementsByClassName("delite")[0].appendChild(cartProd);
-        cartProd.appendChild(img3);
-        cartProd.appendChild(name1);
-        cartProd.appendChild(name3);
-        cartProd.appendChild(price3);
-
-        var deltr = document.createElement("input");
-        deltr.type = "button";
-        deltr.value = "delite";
-        deltr.className = "deltr"
-        cartProd.appendChild(deltr);
-        var order = {
-			"img": img3.src,
-			"name": name3.innerText,
-			"price": price.innerText,
-		}
-        array[index++] = order;
-		localStorage.setItem('order', JSON.stringify(array));
-
-        product.id = "";
-    }
-
-
+    localStorage.newCups = JSON.stringify(newCups)
+    localStorage.getItem(newCups);
 };
-
-
-}
-
 
 function openWindow() {
     var miniWindow = window.open("", "litlewindow", config = 'height=550, width=350, top=200, left=200');
@@ -516,5 +479,3 @@ function openWindow() {
 
     miniWindow.document.close();
 }
-
-//

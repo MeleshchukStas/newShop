@@ -12,7 +12,17 @@ body {
     background: linear-gradient(rgb(90, 90, 194), rgb(184, 181, 57));
     box-sizing: border-box;
 }
-
+br{
+    margin: 0;
+    padding: 0;
+    position: absolute;
+    width: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
 a {
     text-decoration: none;
 }
