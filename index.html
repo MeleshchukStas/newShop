@@ -1,36 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Чашки ">
     <link rel="stylesheet" href="style.css">
-    <title>Document</title>
+    <link rel="shortcut icon" href="img/cofee_mini.png">
+    <title>Твоя чашка</title>
 </head>
 
 <body>
-    <header class="header">
+    <header class="header" style="position: fixed; z-index: 9999999;">
         <div class="logo">
             <img src="img/cofee_logo.png" alt="">
         </div>
-        
+
         <div class="right_box">
             <div class="wallet">
-                <input type="checkbox" id="checkbox_toggle2">
-                <label for="checkbox_toggle2" class="wallet_box"></label>
-                <div class="karzina_list">
-                    <div id="carzina" class="delite"></div>
+                <a href="#open_Modal2" class="wallet_box"></a>
+                <div id="open_Modal2" class="modal_Dialog2">
+                    
+                    <div class="list2" id="qwer">
+                        <a href="#close" title="qwer" class="close">X</a>
+                        <div id="carzina" class="delite">
+                        </div>
+                        <div id="bmodalw" class="bmodal_container"></div>
+                    </div>
                 </div>
-                <div id ="counterP">0</div>
-                <div id="bmodalw" class="bmodal_container"></div>  
-                </div>
-                <div class="persona">
-                    <input type="checkbox" id="checkbox_toggle">
-                    <label for="checkbox_toggle" class="registration">
-                        <img id="output1" src="img/human.png" name="images" alt="" style=" width: 100%; height: 100%; ">
-                    </label>
+                <div id="counter"></div>
+            </div>
+            <div class="persona">
+                <a href="#openModal" class="registration" >
+                    <img id="output1" src="img/human.png" name="images" alt="" style=" width: 100%; height: 100%; ">
+                </a>
+                <div id="openModal" class="modalDialog">
                     <div class="list">
+                        <a href="#close" title="qwer" class="close">X</a>
                         <form name="ver">
                             <input class="text1 sty" name="emailV" type="text" placeholder="Ваш e-mail"
                                 required="required" maxlength="50" size="40">
@@ -58,61 +65,69 @@
                                 maxlength="50">
                             <p class="inp_text" name="pPass">Ваш пароль:</p>
 
-                            <input type="file" name="images" id="fr">
+                            <div class="input__wrapper">
+                                <input class="addPhoto" type="file" name="images" id="fr">
+                                <label for="fr" class="input__file-button">
+                                    <span class="input__file-icon-wrapper"><img class="input__file-icon"
+                                            src="img/add.png" alt="Выбрать файл" width="25"></span>
+                                    <span class="input__file-button-text">Добавить фото</span>
+                                </label>
+                            </div>
+
                             <input id="regis" class="box_button2" type="button" value="Регестрация">
                         </form>
                     </div>
                 </div>
             </div>
+        </div>
     </header>
     <main>
-        <div class="container">
+        <div class="container" style="padding: 100px 0px;">
             <div id="cupsAdds" class="boxs">
                 <div style="width: 100%;" class="tableUser">
-                    <!-- <img id="output2" src="" alt=""> -->
                 </div>
-                <div class="box" >
-                    <img id="pic" src="img/chahka1.jpg" alt="">
+                <div class="box" id="hover1">
+                    <img id="pic1" src="img/chahka1.jpg" alt="">
                     <div class="description">
                         <h3 class="name">Чашка</h3>
                         <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">Цена-350 &#8372</span>
+                        <span class="price">150 &#8372</span>
                         <a class="box_button" href="#">Купить</a>
                     </div>
                 </div>
-                <div class="box" >
-                    <img id="pic" src="img/chahka2.jpg" alt="cup">
+                <div class="box" id="hover2">
+                    <img id="pic2" src="img/chahka2.jpg" alt="cup">
                     <div class="description">
                         <h3 class="name">Чашка</h3>
                         <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">Цена-350 &#8372</span>
+                        <span class="price">250 &#8372</span>
                         <a class="box_button" href="#">Купить</a>
                     </div>
                 </div>
-                <div class="box" >
-                    <img id="pic" src="img/chahka3.jpg" alt="cup">
+                <div class="box" id="hover3">
+                    <img id="pic3" src="img/chahka3.jpg" alt="cup">
                     <div class="description">
                         <h3 class="name">Чашка</h3>
                         <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">Цена-350 &#8372</span>
+                        <span class="price">350 &#8372</span>
                         <a class="box_button" href="#">Купить</a>
                     </div>
                 </div>
-                <div class="box" >
-                    <img id="pic" src="img/chahka4.jpg" alt="cup">
+                <div class="box" id="hover4">
+                    <img id="pic4" src="img/chahka4.jpg" alt="cup">
                     <div class="description">
                         <h3 class="name">Чашка</h3>
                         <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">Цена-350 &#8372</span>
+                        <span class="price">450 &#8372</span>
                         <a class="box_button" href="#">Купить</a>
                     </div>
                 </div>
-                <div class="box" >
-                    <img id="pic" src="img/chahka5.jpg" alt="cup">
+                <div class="box" id="hover5">
+                    <img id="pic5" src="img/chahka5.jpg" alt="cup">
                     <div class="description">
                         <h3 class="name">Чашка</h3>
                         <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">Цена-350 &#8372</span>
+                        <span class="price">550 &#8372</span>
                         <a class="box_button" href="#">Купить</a>
                     </div>
                 </div>
@@ -121,11 +136,18 @@
                     </button>
                 </div>
             </div>
-            
+
         </div>
     </main>
     <footer class="footer">
-        <h2 style="margin: 0 auto; padding: 25px 0;">ВОТ КАК ТО ТАК</h2>
+        <div class="r">
+            <p>© 2023 Твоя чашка. Всі права захищені.</p>
+        </div>
+        <ul class="socseti">
+            <li class="setu"><a href=" "><img src="img/free-icon-instagram-3955024.png" alt=""></a></li>
+            <li class="setu"><a href=" "><img src="img/free-icon-telegram-3670070.png" alt=""></a></li>
+            <li class="setu"><a href=" "><img src="img/free-icon-facebook-4494475.png" alt=""></a></li>
+        </ul>
     </footer>
     <script src="style.js"></script>
     <script>
@@ -133,4 +155,5 @@
     </script>
 </body>
 <div></div>
+
 </html>

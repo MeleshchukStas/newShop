@@ -291,47 +291,47 @@ function validationVpass(passV) {
     return ok;
 }
 //////////Смена фото по наведению
-// function change1() {
-//     pic1.src = "./img/chahka1.jpg";
-// };
-// function change2() {
-//     pic1.src = "./img/chahka.jpg";
-// };
-// function change3() {
-//     pic2.src = "img/chahka2.jpg";
-// };
-// function change4() {
-//     pic2.src = "img/chahka.jpg";
-// };
-// function change5() {
-//     pic3.src = "img/chahka3.jpg";
-// };
-// function change6() {
-//     pic3.src = "img/chahka.jpg";
-// };
-// function change7() {
-//     pic4.src = "img/chahka4.jpg";
-// };
-// function change8() {
-//     pic4.src = "img/chahka.jpg";
-// };
-// function change9() {
-//     pic5.src = "img/chahka5.jpg";
-// };
-// function change10() {
-//     pic5.src = "img/chahka.jpg";
-// };
+function change1() {
+    pic1.src = "./img/chahka1.jpg";
+};
+function change2() {
+    pic1.src = "./img/chahka.jpg";
+};
+function change3() {
+    pic2.src = "img/chahka2.jpg";
+};
+function change4() {
+    pic2.src = "img/chahka.jpg";
+};
+function change5() {
+    pic3.src = "img/chahka3.jpg";
+};
+function change6() {
+    pic3.src = "img/chahka.jpg";
+};
+function change7() {
+    pic4.src = "img/chahka4.jpg";
+};
+function change8() {
+    pic4.src = "img/chahka.jpg";
+};
+function change9() {
+    pic5.src = "img/chahka5.jpg";
+};
+function change10() {
+    pic5.src = "img/chahka.jpg";
+};
 
-// hover1.onmouseover = change2;
-// hover1.onmouseout = change1;
-// hover2.onmouseover = change4;
-// hover2.onmouseout = change3;
-// hover3.onmouseover = change6;
-// hover3.onmouseout = change5;
-// hover4.onmouseover = change8;
-// hover4.onmouseout = change7;
-// hover5.onmouseover = change10;
-// hover5.onmouseout = change9;
+hover1.onmouseover = change2;
+hover1.onmouseout = change1;
+hover2.onmouseover = change4;
+hover2.onmouseout = change3;
+hover3.onmouseover = change6;
+hover3.onmouseout = change5;
+hover4.onmouseover = change8;
+hover4.onmouseout = change7;
+hover5.onmouseover = change10;
+hover5.onmouseout = change9;
 
 ///////////////Добовляем карточки в корзину
 var arrayP = [];
@@ -363,6 +363,7 @@ document.getElementsByClassName("boxs")[0].onclick = function (e) {
         var price2 = document.createElement("span")
         price = tt.closest(".box").childNodes[3].childNodes[5].innerText;
         price2.innerText = price;
+        price2.className = "cena"
 
         document.getElementById("carzina").appendChild(cartProd);
         cartProd.appendChild(img2);
@@ -386,19 +387,71 @@ document.getElementsByClassName("boxs")[0].onclick = function (e) {
 
         localStorage.setItem('order', JSON.stringify(arrayP));
         localStorage.setItem('count', JSON.stringify(index));
-        document.getElementById("counterP").innerText++
-        if (document.getElementById("counterP").innerText != 0)
-            document.getElementById("counterP").style["display"] = "inline-block"
-        else
-            document.getElementById("counterP").style["display"] = "none"
+        document.getElementById("counter").innerText++
 
+        if (document.getElementById("counter").innerText != 0) {
+            document.getElementById("counter").style["display"] = "inline-block"
+
+        } else {
+
+            document.getElementById("counter").style["display"] = "none"
+        }
+
+
+        sumPrices()
         product.id = "";
     }
+}
+
+var c = document.createElement("p")
+    c.className = "cupPrice"
+
+function sumPrices() {
+    var prices = document.getElementsByClassName("cena");
+    var sum = 0;
+    var skidka = 0;
+    var x = document.getElementById("carzina")
+
+    for (var i = 0; i < prices.length; i++) {
+        sum += parseInt(prices[i].innerText);
+
+        if (x.innerHTML != 0) {
+            c.style["display"] = "block"
+        } else {
+            c.style["display"] = "none"
+        }
+
+    }
+    if (sum > 450) {
+        skidka = (sum * 0.10)
+        c.innerText = ("Общая сумма с учётом скидки 10%: " + (sum - skidka));
+    }else{
+        c.innerText = ("Общая сумма " + sum)
+    }
+    
+
+    qwer.appendChild(c)
+    
+    
+
+    return sum;
+
+
+
 }
 
 ///////////////Удаляем карточки из корзины
 document.getElementsByClassName("delite")[0].onclick = function (z) {
     del = z.target;
+    document.getElementById("counter").innerText--
+
+    if (document.getElementById("counter").innerText != 0) {
+        document.getElementById("counter").style["display"] = "inline-block"
+
+    } else {
+
+        document.getElementById("counter").style["display"] = "none"
+    }
 
     if (z.target.className == 'del') {
         del = e.target
@@ -407,28 +460,7 @@ document.getElementsByClassName("delite")[0].onclick = function (z) {
     if (z.target.className == 'deltr') {
         carzina.removeChild(del.closest('.cartProd'))
     }
-}
-
-//////////////////////////////////////
-
-
-document.getElementsByClassName("bmodal_container")[0].onclick = function (e) {
-    str = e.target
-    console.log(e)
-    if (e.target.className == 'del') {
-        str = e.target
-        str.id = "tt"
-        array = JSON.parse(localStorage.order).slice(0, -1)
-        localStorage.count = --index
-        localStorage.order = JSON.stringify(array)
-        bmodalw.removeChild(tt1.closest(".cartProd"))
-        document.getElementById("counter").innerText = index
-        if (document.getElementById("counter").innerText == 0)
-            document.getElementById("counter").style["display"] = "none"
-    }
-    if (e.target.className == 'deltr') {
-        bmodalw.removeChild(str.closest('.cartProd'))
-    }
+    sumPrices()
 }
 
 var newCups = [];
@@ -444,7 +476,7 @@ function newCup(name, text, price, img) {
 function printCup() {
     var str = "";
     for (var i = 0; i < newCups.length; i++) {
-        str = '<div class="box"><div></div><img id="pic" src="' + newCups[i].img + '" alt="cup"><div></div><div class="description"><div></div><h3 class="name">' + newCups[i].name + '</h3><div></div><p class="opis">' + newCups[i].text + '</p><div></div><span class="price">Цена-' + newCups[i].price + ' &#8372 </span><a class="box_button" href="#">Купить</a></div></div>'
+        str = '<div class="box"><div></div><img id="pic" src="' + newCups[i].img + '" alt="cup"><div></div><div class="description"><div></div><h3 class="name">' + newCups[i].name + '</h3><div></div><p class="opis">' + newCups[i].text + '</p><div></div><span class="price">' + newCups[i].price + ' &#8372 </span><a class="box_button" href="#">Купить</a></div></div>'
 
     }
     cupsAdds.innerHTML += str;
@@ -453,11 +485,11 @@ function printCup() {
 };
 
 function openWindow() {
-    var miniWindow = window.open("", "litlewindow", config = 'height=550, width=350, top=200, left=200');
-    var str = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><link rel="stylesheet" href="style.css"><style>form {display: flex;flex-direction: column;align-items: center;justify-content: center}input {width: 90%;height: 40px;margin: 20px 0;font-size: 20px} #butCup{width: 70%;} .imgCup{width: 70%;}.cupClose{padding:10px; border-radius:50%; border:1px solid black; background: grey;text-align: center;font-weight: bold;color: #fff}.closes{margin: 20px 0;display: flex}</style></head><body style="text-align: center;"><h1>Заявка</h1><form action="" id="newCup" style="height: 91vh;"><img style="width: 20px; height: 20px;" id="addImgCup" src="img/human.png" alt="cup"><input id="cupColor" type="text" placeholder="Цвет" class="colorCup"><input id="cupHeight" type="text" placeholder="Обьем" class="heightCup"><input id="cupPrice" type="text" placeholder="Цена" class="priceCup"><input id="imgCup" type="file" value="Добавить фото"><input id="butCup" type="button" value="Создать"><div class="closes"><a href="#" class="cupClose" onclick="self.close()">X</a></div></form></body></html>'
+    var miniWindow = window.open("", "litlewindow", config = 'height=620, width=450, top=200, left=200');
+    var str = '<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Document</title><link rel="stylesheet" href="style.css"><style>form {display: flex;flex-direction: column;align-items: center;justify-content: center}input {width: 90%;height: 40px;margin: 20px 0;font-size: 20px} #butCup{width: 70%; height: 55px; border-radius: 10px; background: #ffbcbc;} .imgCup{width: 70%;}.cupClose{position: absolute; top: 5px; right: 5px; padding:10px 15px; border-radius:50%; border:1px solid black; background: grey;text-align: center;font-weight: bold;color: #fff}.closes{margin: 20px 0;display: flex}</style></head><body style="text-align: center;"><h1>Новая чашка</h1><form action="" id="newCup"><img style="width: 105px; height: 120px;" id="addImgCup" src="img/cup.png" alt="cup"><input id="cupColor" type="text" placeholder="Чашка" class="colorCup"><input id="cupHeight" type="text" placeholder="Описание" class="heightCup"><input id="cupPrice" type="text" placeholder="Цена" class="priceCup"><div class="input__wrapper"><input class="addPhoto" type="file" name="images" id="fr"><label for="fr" class="input__file-button"><span class="input__file-icon-wrapper"><img class="input__file-icon" src="img/add.png"alt="Выбрать файл" width="25"></span><span class="input__file-button-text">Добавить фото</span></label></div><input id="butCup" type="button" value="Создать"><div class="closes"><a href="#" class="cupClose" onclick="self.close()">X</a></div></form></body></html>'
     miniWindow.document.write(str);
 
-    var buttonAddCup = miniWindow.document.getElementById("imgCup").onchange = function (e) {
+    var buttonAddCup = miniWindow.document.getElementById("fr").onchange = function (e) {
         var input = e.target;
 
         var readCup = new FileReader();
@@ -479,3 +511,4 @@ function openWindow() {
 
     miniWindow.document.close();
 }
+////
