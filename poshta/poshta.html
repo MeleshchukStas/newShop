@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <div class="header_left">
+                <div class="header_meni_left">
+                    <h2 class="text_logo">JORMI</h2>
+                    <div class="mobile-menu-button">
+                        <div id="burgerMenu">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                        </div>
+                        <ul class="mobileMeni">
+                            <button id="closeButton" type="button">X</button>
+                            <li class="activeLink"><a href="../index.html" data-translate="home">Головна</a></li>
+                            <li><a href="../shop.html" data-translate="shop">Магазин</a></li>
+                            <li><a href="#" data-translate="Contacts">Контакти</a></li>
+                            <li><a href="#" data-translate="Comments">Коментарі</a></li>
+                        </ul>
+                    </div>
+                    <ul class="ListOfClothes">
+                        <li class="activeLink"><a href="../index.html" data-translate="home">Головна</a></li>
+                        <li><a href="../shop.html" data-translate="shop">Магазин</a></li>
+                        <li><a href="#" data-translate="Contacts">Контакти</a></li>
+                        <li><a href="#" data-translate="Comments">Коментарі</a></li>
+                    </ul>
+
+                    <select id="languageSelector">
+                        <option value="lang-ua.json">Українська</option>
+                        <option value="lang-en.json">English</option>
+                        <!-- Добавьте другие языки по аналогии -->
+                    </select>
+                    <div class="header_meni_right">
+                        <input type="search" id="poisk">
+                        <button type="button" id="lupa"></button>
+                        <div id="karzina"><span id="cartItemCount">0</span><span id="totalOrderAmount"></span></div>
+                    </div>
+                </div>
+                
+            </div>
+    </header>
+    <main class="posta">
+        <form action="telegram.php" method="POST" id="orderForm">
+            <input type="text" placeholder="Имя" name="firstName" id="firstName">
+            <input type="text" placeholder="Фамилия" name="lastName" id="lastName">
+            <input type="email" placeholder="E-mail" name="email" id="email">
+            <input type="phone" placeholder="Номер телефона" name="phone" id="phone">
+            <select id="areaSelect" name="getAre">
+                <option value="">Выберите область</option>
+            </select>
+            <select id="citySelect" name="getCity">
+                <option value="">Выберите город</option>
+            </select>
+            <select id="warehouseSelect" name="getWarehouse">
+                <option value="">Выберите відділення або поштомат</option>
+            </select>
+            <input type="hidden" name="areaDescription" id="areaDescription">
+            <input type="hidden" name="cityDescription" id="cityDescription">
+            <input type="hidden" name="warehouseDescription" id="warehouseDescription">
+            <input type="hidden" name="getSpisok" id="getSpisok">
+            <button id="your_button" type="submit">Зробити замовлення</button>
+        </form>
+        <div id="cartItemsContainer"></div>
+    </main>
+    <script type="module" src="../style2.js"></script>
+    <script type="module" src="../karzina.js"></script>
+    <script type="module" src="./poshta.js">
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="ua">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/noUiSlider/14.6.4/nouislider.min.js"></script>
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body id="shop_page">
+  <header>
+    <select id="languageSelector">
+      <option value="lang-ua.json">Українська</option>
+      <option value="lang-en.json">English</option>
+    </select>
+    <div >
+      <div class="header_left">
+        <div class="header_meni_left">
+          <h2 class="text_logo">JORMI</h2>
+          <div class="mobile-menu-button">
+            <div id="burgerMenu">
+              <div class="bar"></div>
+              <div class="bar"></div>
+              <div class="bar"></div>
+            </div>
+            <ul class="mobileMeni">
+              <button id="closeButton" type="button">X</button>
+              <li class="activeLink"><a href="index.html" class="lng-homew">Головна</a></li>
+              <li><a href="shop.html" class="lng-shopw">Магазин</a></li>
+              <li><a href="#" class="lng-contactsw">Контакти</a></li>
+              <li><a href="#" class="lng-commentsw">Коментарі</a></li>
+            </ul>
+          </div>
+          <ul class="ListOfClothes">
+            <li class="activeLink"><a href="index.html" class="lng-homeqs">Головна</a></li>
+            <li><a href="shop.html" class="lng-shopqs">Магазин</a></li>
+            <li><a href="#" class="lng-contactsqs">Контакти</a></li>
+            <li><a href="#" class="lng-commentsqs">Коментарі</a></li>
+          </ul>
+          <select class="change-lang">
+            <option value="ua">UA</option>
+            <option value="en">EN</option>
+        </select>
+          <div class="header_meni_right">
+            <input type="search" id="poisk">
+            <button type="button" id="lupa"></button>
+            <div id="karzina"><span id="cartItemCount">0</span></div>
+          </div>
+        </div>
+      </div>
+  </header>
+  <div id="open_window">
+    <div class="txt">
+      <h2>Кошик</h2>
+      <button id="closeWindow" type="button"></button>
+    </div>
+    <ul id="cartItems"></ul>
+    <p id="totalAmount"></p>
+    <a id="zakaz_tovara" href="poshta/poshta.html">оформити заказ</a>
+  </div>
+  <div class="container_product">
+    <div id="sort-select">
+      <div class="qweqwe">
+        <div class="price_filter">
+          <h4>Сортировка по цене</h4>
+          <label>
+            <input id="qwe" type="radio" name="sort" value="price_plus">От меньшего к большему
+          </label>
+          <label>
+            <input id="ewq" type="radio" name="sort" value="price_minus">От большего к меньшему
+          </label>
+        </div>
+        <div class="country_filter">
+          <h4>Сортировка по странам</h4>
+          <label for="">
+            <input type="checkbox" name="country" value="USA">США
+          </label>
+          <label for="">
+            <input type="checkbox" name="country" value="Italy">Италия
+          </label>
+          <label for="">
+            <input type="checkbox" name="country" value="Китай">Китай
+          </label>
+          <label for="">
+            <input type="checkbox" name="country" value="Germany">Германия
+          </label>
+        </div>
+        <div class="price_filter2">
+          <div id="slider"></div>
+          <p>Значение ползунков: <span id="value1">0</span> и <span id="value2">200</span></p>
+        </div>
+      </div>
+    </div>
+
+    <div id="productContainer">
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+        <div class="footer_boxs">
+            <div class="footer_box1">
+                <h3 class="lng-footer_box1_h3">Наши соцсети</h3>
+                <ul>
+                    <li><a class="lng-footer_box1_ul_li1" href="#">Инстаграмм</a></li>
+                    <li><a class="lng-footer_box1_ul_li2" href="#">Фейсбук</a></li>
+                </ul>
+            </div>
+            <div class="footer_box2">
+                <ul>
+                    <li class="lng-footer_box2_ul_li1">г. Покровск</li>
+                    <li><a class="lng-footer_box2_ul_li2" href="tel: +380961111111">тел. +380961111111</a></li>
+                    <li><a class="lng-footer_box2_ul_li3" href="tel: +380672222222">тел. +380672222222</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+
+  <script type="module" src="./shop.js"></script>
+  <script type="module" src="./style2.js"></script>
+  <script type="module" src="./karzina.js"></script>
+</body>
+
+</html>

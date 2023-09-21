@@ -1,159 +1,166 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ua">
 
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Чашки ">
-    <link rel="stylesheet" href="style.css">
-    <link rel="shortcut icon" href="img/cofee_mini.png">
-    <title>Твоя чашка</title>
+    <title>Document1</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Roboto&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    <link rel="stylesheet" href="./style.css">
 </head>
 
-<body>
-    <header class="header" style="position: fixed; z-index: 9999999;">
-        <div class="logo">
-            <img src="img/cofee_logo.png" alt="">
-        </div>
-
-        <div class="right_box">
-            <div class="wallet">
-                <a href="#open_Modal2" class="wallet_box"></a>
-                <div id="open_Modal2" class="modal_Dialog2">
-                    
-                    <div class="list2" id="qwer">
-                        <a href="#close" title="qwer" class="close">X</a>
-                        <div id="carzina" class="delite">
+<body id="home_page">
+    <header>
+        <div class="header">
+            <div class="header_left">
+                <div class="header_meni_left">
+                    <h2 class="text_logo">JORMI</h2>
+                    <div class="mobile-menu-button">
+                        <div id="burgerMenu">
+                            <div class="bar"></div>
+                            <div class="bar"></div>
+                            <div class="bar"></div>
                         </div>
-                        <div id="bmodalw" class="bmodal_container"></div>
+                        <ul class="mobileMeni">
+                            <button id="closeButton" type="button">X</button>
+                            <li class="activeLink"><a href="index.html" class="lng-home">Головна</a></li>
+                            <li><a href="shop.html" class="lng-shop">Магазин</a></li>
+                            <li><a href="#" class="lng-contacts">Контакти</a></li>
+                            <li><a href="#" class="lng-comments">Коментарі</a></li>
+                        </ul>
+                    </div>
+                    <ul class="ListOfClothes">
+                        <li class="activeLink"><a href="index.html" class="lng-homeq">Головна</a></li>
+                        <li><a href="shop.html" class="lng-shopq">Магазин</a></li>
+                        <li><a href="#" class="lng-contactsq">Контакти</a></li>
+                        <li><a href="#" class="lng-commentsq">Коментарі</a></li>
+                    </ul>
+
+                    <select class="change-lang">
+                        <option value="ua">UA</option>
+                        <option value="en">EN</option>
+                    </select>
+                    <div class="header_meni_right">
+                        <input type="search" id="poisk">
+                        <button type="button" id="lupa"></button>
+                        <div id="karzina"><span id="cartItemCount">0</span><span id="totalOrderAmount"></span></div>
                     </div>
                 </div>
-                <div id="counter"></div>
-            </div>
-            <div class="persona">
-                <a href="#openModal" class="registration" >
-                    <img id="output1" src="img/human.png" name="images" alt="" style=" width: 100%; height: 100%; ">
-                </a>
-                <div id="openModal" class="modalDialog">
-                    <div class="list">
-                        <a href="#close" title="qwer" class="close">X</a>
-                        <form name="ver">
-                            <input class="text1 sty" name="emailV" type="text" placeholder="Ваш e-mail"
-                                required="required" maxlength="50" size="40">
-                            <p class="inp_text" name="vEmail">Ваш e-mail:</p>
-
-                            <input class="text1 sty" name="passV" type="text" placeholder="Ваш пароль" required
-                                maxlength="50">
-                            <p class="inp_text" name="vPass">Ваш пароль:</p>
-
-                            <input id="avtor" class="box_button2" type="button1" value="Авторизация">
-                        </form>
-
-                        <form name="reg">
-                            <input class="text2 sty" name="firstName" type="text" placeholder="Ваше имя" required
-                                maxlength="50">
-                            <p class="inp_text" name="pFname">Ваше имя:</p>
-
-
-                            <input class="text2 sty" name="emailY" type="email" placeholder="Ваш e-mail" required
-                                maxlength="50">
-                            <p class="inp_text" name="pEmail">Ваш e-mail:</p>
-
-
-                            <input class="text2 sty" name="passY" type="pass" placeholder="Ваш пароль" required
-                                maxlength="50">
-                            <p class="inp_text" name="pPass">Ваш пароль:</p>
-
-                            <div class="input__wrapper">
-                                <input class="addPhoto" type="file" name="images" id="fr">
-                                <label for="fr" class="input__file-button">
-                                    <span class="input__file-icon-wrapper"><img class="input__file-icon"
-                                            src="img/add.png" alt="Выбрать файл" width="25"></span>
-                                    <span class="input__file-button-text">Добавить фото</span>
-                                </label>
-                            </div>
-
-                            <input id="regis" class="box_button2" type="button" value="Регестрация">
-                        </form>
+                <div class="header_middle">
+                    <div class="header_text">
+                        <h1 class="lng-header-text-h1">Великий вибір одягу нової колекції</h1>
+                        <p class="lng-headerTextP">Ми ручаемося за якість одягу на будь який смак</p>
+                        <a href="#" class="lng-headerTextButton">НОВА КОЛЕКЦІЯ</a>
+                    </div>
+                    <div class="box_header_midle_img">
+                        <!-- <img src="img/night.jpg" alt="logo2"> -->
                     </div>
                 </div>
             </div>
-        </div>
     </header>
     <main>
-        <div class="container" style="padding: 100px 0px;">
-            <div id="cupsAdds" class="boxs">
-                <div style="width: 100%;" class="tableUser">
-                </div>
-                <div class="box" id="hover1">
-                    <img id="pic1" src="img/chahka1.jpg" alt="">
-                    <div class="description">
-                        <h3 class="name">Чашка</h3>
-                        <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">150 &#8372</span>
-                        <a class="box_button" href="#">Купить</a>
+        <div id="open_window">
+            <div class="txt">
+                <h2>Кошик</h2>
+                <button id="closeWindow" type="button"></button>
+            </div>
+            <ul id="cartItems"></ul>
+            <p id="totalAmount"></p>
+            <a id="zakaz_tovara" href="poshta/poshta.html">оформити заказ</a>
+        </div>
+        <div class="container">
+            <div class="aboutUs">
+                <h2 class="lng-aboutUsH2">Про нас</h2>
+                <div class="aboutUs_text_box">
+                    <div class="aboutUs_img">
+                        <img src="img/qwer.jpg" alt="qwe">
                     </div>
-                </div>
-                <div class="box" id="hover2">
-                    <img id="pic2" src="img/chahka2.jpg" alt="cup">
-                    <div class="description">
-                        <h3 class="name">Чашка</h3>
-                        <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">250 &#8372</span>
-                        <a class="box_button" href="#">Купить</a>
+                    <div class="aboutUs_txt">
+                        <p class="lng-aboutUs_txt_p">Здравствуйте, за этим действительно больно следить. Его
+                            старейшины освобождены! Великие неприятности в бегстве обвинителей приходится ожидать в
+                            самые ясные времена. Может ли он искать его в наше время, но развращенное нами, но которого
+                            мы обвиняем в том, что он следует обязанностям и страданиям мудрых, но удовольствиям? Тело
+                            хочет чего-то свободного от жизни. Спорим, он некоторых ненавидит? Она, мы обвиняем ее в
+                            терпении великой боли, будет ли она часто открывать дверь и не развратится лестью этих нужд
+                            обвинителей? Изобретатель, или боль. Но посмотрите всю причину, по которой никто из
+                            развращённых мягкостью, спасаемых и истинных не впадает в долги, боль отказа от лести,
+                            потому и сам выбор есть великое удовольствие! Оттолкнутый, с болями и страданиями, свободный
+                            отталкивает архитектора к самому грубому, и я не объясню обучения, ослепленного лестью, я
+                            прощу его хлопоты с обязанностями. Мешает нам переносить боль или истина, что никакое
+                            удовольствие, в котором мы обвиняем, не последует за нами.</p>
+                        <div class="spisok">
+                            <div class="lng-spisok_li">Завжди у наявності новинки.</div>
+                            <div class="lng-spisok_liq">Підхід до кожного клієнта.</div>
+                            <div class="lng-spisok_liw">Можливість замовити модель в потрібному розмірі.</div>
+                            <div class="lng-spisok_lie">Знижки постійним клієнтам.</div>
+                        </div>
                     </div>
-                </div>
-                <div class="box" id="hover3">
-                    <img id="pic3" src="img/chahka3.jpg" alt="cup">
-                    <div class="description">
-                        <h3 class="name">Чашка</h3>
-                        <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">350 &#8372</span>
-                        <a class="box_button" href="#">Купить</a>
-                    </div>
-                </div>
-                <div class="box" id="hover4">
-                    <img id="pic4" src="img/chahka4.jpg" alt="cup">
-                    <div class="description">
-                        <h3 class="name">Чашка</h3>
-                        <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">450 &#8372</span>
-                        <a class="box_button" href="#">Купить</a>
-                    </div>
-                </div>
-                <div class="box" id="hover5">
-                    <img id="pic5" src="img/chahka5.jpg" alt="cup">
-                    <div class="description">
-                        <h3 class="name">Чашка</h3>
-                        <p class="opis">Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda, labore.</p>
-                        <span class="price">550 &#8372</span>
-                        <a class="box_button" href="#">Купить</a>
-                    </div>
-                </div>
-                <div id="asdfrqw">
-                    <button class='box_add' onclick='openWindow()'>
-                    </button>
                 </div>
             </div>
-
+        </div>
+        <div class="container">
+            <div class="box_collection">
+                <div class="elem1"></div>
+                <div class="elem2"></div>
+                <div class="collection2023">
+                    <p>2023</p>
+                    <p class="lng-collection2023-p">колекція</p>
+                </div>
+                <div class="elem3"></div>
+                <div class="elem4"></div>
+                <div class="excluziv">
+                    <p class="lng-excluziv_p">Ексклюзивна колекція літнього одягу</p>
+                </div>
+                <div class="elem5"></div>
+            </div>
+        </div>
+        <div class="box_slaider">
+            <!-- <h2 class="lng-box_slaider_h2">Самые популярные товары</h2> -->
+            <div id="sclick_slider" class="slider"></div>
+        </div>
+        <div class="foto">
+            <div class="container">
+                <div class="foto_text">
+                    <p class="lng-foto_text_p">Встигни придбати одяг на будь-який смак за знижкою 40%</p>
+                    <div>
+                        <a class="lng-foto_text_a" href="shop.html">МАГАЗИН</a>
+                    </div>
+                </div>
+            </div>
         </div>
     </main>
     <footer class="footer">
-        <div class="r">
-            <p>© 2023 Твоя чашка. Всі права захищені.</p>
+        <div class="container">
+            <div class="footer_boxs">
+                <div class="footer_box1">
+                    <h3 class="lng-footer_box1_h3">Наши соцсети</h3>
+                    <ul>
+                        <li><a class="lng-footer_box1_ul_li1" href="#">Инстаграмм</a></li>
+                        <li><a class="lng-footer_box1_ul_li2" href="#">Фейсбук</a></li>
+                    </ul>
+                </div>
+                <div class="footer_box2">
+                    <ul>
+                        <li class="lng-footer_box2_ul_li1">г. Покровск</li>
+                        <li><a class="lng-footer_box2_ul_li2" href="tel: +380961111111">тел. +380961111111</a></li>
+                        <li><a class="lng-footer_box2_ul_li3" href="tel: +380672222222">тел. +380672222222</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
-        <ul class="socseti">
-            <li class="setu"><a href=" "><img src="img/free-icon-instagram-3955024.png" alt=""></a></li>
-            <li class="setu"><a href=" "><img src="img/free-icon-telegram-3670070.png" alt=""></a></li>
-            <li class="setu"><a href=" "><img src="img/free-icon-facebook-4494475.png" alt=""></a></li>
-        </ul>
+        <img src="" alt="">
     </footer>
-    <script src="style.js"></script>
-    <script>
-
-    </script>
+    <script src="./lang/lang.js"></script>
+    <script src="./lang/multiLang.js"></script>
+    <script type="module" src="./style2.js"></script>
+    <script type="module" src="./karzina.js"></script>
+    <script type="module" src="./style.js"></script>
 </body>
-<div></div>
 
 </html>
